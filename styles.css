@@ -273,3 +273,137 @@ html, body{
     font-size:20px;
   }
 }
+
+
+/* ==========================================================
+   HERO FIX v3 — use the approved wide right-side panel at its
+   natural aspect ratio. No zoomed rocket, no duplicate overlays.
+   ========================================================== */
+
+.hero{
+  overflow:hidden !important;
+}
+
+.hero-grid{
+  width:min(1440px,calc(100% - 32px)) !important;
+  grid-template-columns:38% 62% !important;
+  min-height:0 !important;
+  align-items:center !important;
+}
+
+.hero-copy{
+  min-width:0 !important;
+  padding:42px 28px 38px 0 !important;
+}
+
+.hero h1{
+  font-size:clamp(56px,5.5vw,84px) !important;
+  line-height:.87 !important;
+}
+
+.hero-deck{
+  font-size:clamp(16px,1.25vw,19px) !important;
+  line-height:1.42 !important;
+}
+
+.hero-media{
+  position:relative !important;
+  min-width:0 !important;
+  min-height:0 !important;
+  aspect-ratio:1372 / 614 !important;
+  overflow:hidden !important;
+  background:
+    url("hero-right-approved.png") center center / 100% 100% no-repeat !important;
+}
+
+/* Hide the old separate rocket/slogan/ribbon layers.
+   They are already built into the approved right-side panel. */
+.hero-photo,
+.hero-slogan,
+.hero-ribbons{
+  display:none !important;
+}
+
+/* Keep buttons on one row where space allows. */
+.hero-actions{
+  display:flex !important;
+  gap:14px !important;
+  flex-wrap:wrap !important;
+}
+
+@media(max-width:1050px){
+  .hero-grid{
+    grid-template-columns:1fr !important;
+  }
+  .hero-copy{
+    padding-right:0 !important;
+  }
+  .hero-media{
+    width:100% !important;
+    aspect-ratio:1372 / 614 !important;
+  }
+}
+
+@media(max-width:720px){
+  .hero-grid{
+    width:min(100% - 24px,1440px) !important;
+  }
+  .hero h1{
+    font-size:52px !important;
+  }
+  .hero-media{
+    aspect-ratio:1372 / 614 !important;
+  }
+}
+
+
+/* ==========================================================
+   HERO COPY TYPOGRAPHY FIX v4
+   Prevents awkward one-word lines in the left hero section.
+   ========================================================== */
+
+.eyebrow{
+  white-space:nowrap !important;
+  font-size:clamp(12px,1.05vw,16px) !important;
+  letter-spacing:.19em !important;
+  line-height:1.2 !important;
+}
+
+.hero-copy{
+  min-width:0 !important;
+}
+
+.hero-deck{
+  max-width:620px !important;
+  font-size:clamp(15px,1.15vw,18px) !important;
+  line-height:1.42 !important;
+  text-wrap:pretty;
+}
+
+.hero-deck .deck-line{
+  display:block;
+  white-space:nowrap;
+}
+
+@media(max-width:1050px){
+  .eyebrow{
+    white-space:normal !important;
+  }
+  .hero-deck .deck-line{
+    white-space:normal;
+    display:inline;
+  }
+  .hero-deck .deck-line:not(:last-child)::after{
+    content:" ";
+  }
+}
+
+@media(max-width:720px){
+  .eyebrow{
+    font-size:12px !important;
+    letter-spacing:.16em !important;
+  }
+  .hero-deck{
+    font-size:16px !important;
+  }
+}
