@@ -308,3 +308,65 @@ footer p{margin:0;color:#adbac8;font-size:10px}
     aspect-ratio:604 / 340 !important;
   }
 }
+
+
+/* HOTFIX 5 — approved top-of-page artwork rendered exactly as supplied. */
+.site-header,
+.hero{
+  display:none !important;
+}
+.approved-hero{
+  width:100%;
+  background:#fff;
+  padding:0;
+  margin:0;
+}
+.approved-hero-wrap{
+  position:relative;
+  width:100%;
+  max-width:none;
+  margin:0;
+}
+.approved-hero img{
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:contain;
+}
+.approved-hero-hotspots{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+}
+.approved-hero-hotspots .hotspot{
+  position:absolute;
+  display:block;
+  pointer-events:auto;
+  background:transparent;
+  text-decoration:none;
+}
+
+/* Hotspot coordinates are percentages of the approved 735×298 artwork. */
+.hotspot.home{left:26.2%;top:12%;width:7.4%;height:10%;}
+.hotspot.capabilities{left:35.3%;top:12%;width:11%;height:10%;}
+.hotspot.experience{left:47.2%;top:12%;width:10.5%;height:10%;}
+.hotspot.insights{left:59.1%;top:12%;width:8.5%;height:10%;}
+.hotspot.about{left:68.5%;top:12%;width:7%;height:10%;}
+.hotspot.lets-talk{left:80.2%;top:7%;width:14.7%;height:15%;}
+.hotspot.start{left:4.3%;top:80.5%;width:19.7%;height:12.5%;}
+.hotspot.view-experience{left:25.3%;top:80.5%;width:15.4%;height:12.5%;}
+
+/* Keep the next section tight to the approved hero, exactly like the mockup. */
+.brand-experience{
+  margin-top:0 !important;
+}
+
+/* Mobile: preserve the exact hero as a single proportional image rather than reflowing it. */
+@media(max-width:720px){
+  .approved-hero{
+    overflow-x:auto;
+  }
+  .approved-hero-wrap{
+    min-width:735px;
+  }
+}
