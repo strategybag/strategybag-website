@@ -1,10 +1,4 @@
 #!/usr/bin/env python3
-"""
-Refresh STRATEGY BAG's three homepage insight links from Google News RSS.
-
-No API key is required. The script intentionally links to the original
-publisher through Google News rather than copying article content.
-"""
 from pathlib import Path
 from datetime import datetime
 import json
@@ -12,7 +6,7 @@ import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parent
 OUTPUT = ROOT / "insights.json"
 
 SEARCHES = [
@@ -21,70 +15,66 @@ SEARCHES = [
     ("INNOVATION", '"product innovation" marketing OR commercialization marketing'),
 ]
 
-PREFERRED_SOURCES = [
+PREFERRED = [
     "Harvard Business Review", "McKinsey", "MIT Sloan", "Forbes",
     "Fast Company", "Fortune", "Adweek", "Marketing Week", "The Drum"
 ]
 
-def google_news(category, query):
-    params = urllib.parse.urlencode({
-        "q": query,
-        "hl": "en-US",
-        "gl": "US",
-        "ceid": "US:en"
-    })
-    url = f"https://news.google.com/rss/search?{params}"
-    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 STRATEGY-BAG-site"})
-    with urllib.request.urlopen(req, timeout=30) as response:
-        xml = response.read()
+def existing_items():
+    try:
+        data = json.loads(OUTPUT.read_text(encoding="utf-8"))
+        return {x.get("category"): x for x in data if isinstance(x, dict)}
+    except Exception:
+        return {}
 
-    root = ET.fromstring(xml)
-    items = []
+def fetch(category, query):
+    params = urllib.parse.urlencode({"q": query, "hl":"en-US", "gl":"US", "ceid":"US:en"})
+    url = "https://news.google.com/rss/search?" + params
+    req = urllib.request.Request(url, headers={"User-Agent":"Mozilla/5.0 STRATEGY-BAG"})
+    with urllib.request.urlopen(req, timeout=25) as response:
+        root = ET.fromstring(response.read())
+
+    results = []
     for node in root.findall(".//item"):
         title = (node.findtext("title") or "").strip()
         link = (node.findtext("link") or "").strip()
         raw_date = (node.findtext("pubDate") or "").strip()
         source_node = node.find("source")
-        source = (source_node.text or "").strip() if source_node is not None else ""
-
+        source = (source_node.text or "").strip() if source_node is not None else "News source"
         if not title or not link:
             continue
-
         try:
-            parsed = datetime.strptime(raw_date, "%a, %d %b %Y %H:%M:%S %Z")
-            display_date = parsed.strftime("%b %d, %Y")
+            dt = datetime.strptime(raw_date, "%a, %d %b %Y %H:%M:%S %Z")
+            date = dt.strftime("%b %d, %Y")
         except Exception:
-            display_date = ""
-
-        items.append({
+            date = ""
+        results.append({
             "category": category,
             "title": title,
-            "source": source or "News source",
-            "date": display_date,
+            "source": source,
+            "date": date,
             "url": link,
             "summary": ""
         })
-    return items
+    preferred = [r for r in results if any(p.lower() in r["source"].lower() for p in PREFERRED)]
+    return (preferred or results)[0] if (preferred or results) else None
 
-selected = []
+old = existing_items()
+new = []
 for category, query in SEARCHES:
     try:
-        results = google_news(category, query)
+        item = fetch(category, query)
     except Exception as exc:
-        print(f"{category}: {exc}")
-        results = []
+        print(category, exc)
+        item = None
+    if item is None:
+        item = old.get(category)
+    if item is not None:
+        new.append(item)
 
-    preferred = [
-        item for item in results
-        if any(source.lower() in item["source"].lower() for source in PREFERRED_SOURCES)
-    ]
-    pool = preferred or results
-    if pool:
-        selected.append(pool[0])
-
-# Do not erase the working homepage if a network/RSS fetch fails.
-if selected:
-    OUTPUT.write_text(json.dumps(selected[:3], indent=2), encoding="utf-8")
-    print(f"Wrote {len(selected[:3])} insight items.")
+# Only overwrite when all three categories are present.
+if len(new) == 3:
+    OUTPUT.write_text(json.dumps(new, indent=2), encoding="utf-8")
+    print("Updated all 3 insight cards.")
 else:
-    print("No usable stories found; leaving existing insights.json unchanged.")
+    print("Could not obtain all 3 categories; existing insights.json left unchanged.")

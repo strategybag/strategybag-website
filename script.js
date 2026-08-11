@@ -67,7 +67,7 @@
       return response.json();
     })
     .then(items => {
-      if (!Array.isArray(items) || items.length === 0) return;
+      if (!Array.isArray(items) || items.length < 3) return;
       insightGrid.innerHTML = "";
       items.slice(0, 3).forEach((item, index) => insightGrid.appendChild(createInsightCard(item, index)));
     })
