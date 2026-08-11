@@ -12,18 +12,13 @@ jobs:
   refresh:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out site
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-
-      - name: Refresh insight links
-        run: python scripts/update_insights.py
-
-      - name: Commit updated feed
+      - name: Refresh all three insight cards
+        run: python update_insights.py
+      - name: Commit updated insights
         run: |
           git config user.name "STRATEGY BAG Insights Bot"
           git config user.email "actions@users.noreply.github.com"
