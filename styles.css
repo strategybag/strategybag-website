@@ -2,128 +2,141 @@
 :root{
   --green:#00723f;
   --navy:#081f3f;
-  --white:#ffffff;
   --line:#e6edf1;
 }
+
 *{box-sizing:border-box}
-html,body{margin:0;padding:0}
+html,body{
+  margin:0;
+  padding:0;
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden;
+}
 body{
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:Arial,Helvetica,sans-serif;
   color:var(--navy);
   background:#fff;
 }
+
+/* HEADER */
 .site-header{
   width:100%;
   background:#fff;
   border-bottom:1px solid var(--line);
 }
 .header-shell{
-  width:min(1500px, calc(100% - 48px));
+  width:min(1440px,calc(100% - 32px));
   margin:0 auto;
-  min-height:112px;
+  min-height:96px;
   display:grid;
-  grid-template-columns:240px 1fr 230px;
+  grid-template-columns:190px minmax(0,1fr) 190px;
   align-items:center;
-  gap:24px;
+  gap:20px;
 }
 .brand img{
-  display:block;
-  width:180px;
+  width:155px;
   height:auto;
 }
 .main-nav{
+  min-width:0;
   display:flex;
+  align-items:center;
   justify-content:center;
-  gap:52px;
+  gap:clamp(24px,3.2vw,48px);
 }
 .main-nav a{
+  white-space:nowrap;
   text-decoration:none;
   text-transform:uppercase;
-  font-size:16px;
+  font-size:clamp(12px,1vw,15px);
   font-weight:800;
   color:var(--navy);
-  padding:44px 0 32px;
+  padding:36px 0 27px;
   border-bottom:4px solid transparent;
 }
 .main-nav a.active{
   color:var(--green);
-  border-bottom-color:var(--green);
+  border-color:var(--green);
 }
 .talk-button{
   justify-self:end;
-  min-width:210px;
+  width:180px;
   text-decoration:none;
   text-transform:uppercase;
-  font-size:17px;
+  font-size:15px;
   font-weight:800;
   color:#fff;
   background:var(--green);
   border-radius:6px;
-  padding:19px 26px;
+  padding:17px 18px;
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:34px;
+  gap:28px;
 }
 
+/* HERO */
 .hero{
   width:100%;
   background:#fff;
 }
 .hero-shell{
-  width:min(1500px, calc(100% - 48px));
+  width:min(1440px,calc(100% - 32px));
   margin:0 auto;
   display:grid;
-  grid-template-columns:39% 61%;
-  min-height:570px;
+  grid-template-columns:38% 62%;
+  align-items:stretch;
 }
 .hero-copy{
-  padding:58px 28px 40px 0;
+  min-width:0;
+  padding:50px 28px 42px 0;
   display:flex;
   flex-direction:column;
   justify-content:center;
-  min-width:0;
 }
 .eyebrow{
-  margin:0 0 22px;
+  margin:0 0 18px;
   color:var(--green);
-  font-size:18px;
+  font-size:clamp(13px,1.25vw,18px);
   font-weight:800;
-  letter-spacing:.22em;
+  letter-spacing:.20em;
+  line-height:1.25;
+  white-space:nowrap;
 }
 h1{
   margin:0;
-  font-size:clamp(72px, 6.8vw, 118px);
-  line-height:.84;
-  letter-spacing:-.05em;
   color:var(--navy);
+  font-size:clamp(58px,5.7vw,88px);
+  line-height:.87;
+  letter-spacing:-.05em;
   font-weight:900;
 }
 h1 span{color:var(--green)}
 .deck{
-  margin:28px 0 0;
-  max-width:650px;
-  font-size:22px;
-  line-height:1.45;
+  margin:24px 0 0;
+  max-width:620px;
+  font-size:clamp(16px,1.35vw,20px);
+  line-height:1.42;
 }
 .hero-actions{
   display:flex;
-  gap:18px;
-  margin-top:30px;
+  gap:16px;
+  margin-top:26px;
   flex-wrap:wrap;
 }
 .hero-actions a{
-  min-width:230px;
+  min-width:220px;
   text-decoration:none;
   text-transform:uppercase;
-  font-size:14px;
+  font-size:13px;
   font-weight:800;
   border-radius:5px;
-  padding:17px 22px;
+  padding:16px 20px;
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:24px;
+  gap:22px;
 }
 .primary-button{
   background:var(--green);
@@ -135,43 +148,76 @@ h1 span{color:var(--green)}
   border:1.5px solid var(--green);
 }
 
+/*
+  Critical fix:
+  The old version forced a 570px-tall image box, so a wide image had to zoom/crop.
+  This panel now keeps the natural wide aspect ratio.
+*/
 .hero-image-wrap{
   position:relative;
+  min-width:0;
   overflow:hidden;
-  min-height:570px;
+  aspect-ratio:1412 / 619;
+  align-self:center;
 }
 .hero-image-wrap img{
+  position:absolute;
+  inset:0;
+  display:block;
   width:100%;
   height:100%;
   object-fit:cover;
   object-position:center center;
-  display:block;
 }
 
-@media (max-width: 1100px){
+/* TABLET */
+@media(max-width:1050px){
   .header-shell{
-    grid-template-columns:180px 1fr 180px;
-  }
-  .main-nav{gap:24px}
-  .main-nav a{font-size:13px}
-  .talk-button{min-width:165px;font-size:14px}
-  .hero-shell{grid-template-columns:1fr}
-  .hero-copy{padding-right:0}
-  .hero-image-wrap{min-height:420px}
-}
-
-@media (max-width: 760px){
-  .header-shell{
-    width:min(100% - 28px, 1500px);
-    grid-template-columns:1fr auto;
-    min-height:82px;
+    grid-template-columns:160px minmax(0,1fr) 160px;
   }
   .brand img{width:135px}
+  .main-nav{gap:20px}
+  .talk-button{width:150px;font-size:13px}
+  .hero-shell{grid-template-columns:1fr}
+  .hero-copy{padding-right:0}
+  .hero-image-wrap{
+    width:100%;
+    aspect-ratio:1412 / 619;
+  }
+}
+
+/* MOBILE */
+@media(max-width:760px){
+  .header-shell{
+    width:min(100% - 24px,1440px);
+    min-height:76px;
+    grid-template-columns:1fr auto;
+  }
+  .brand img{width:125px}
   .main-nav{display:none}
-  .talk-button{min-width:auto;padding:14px 18px;font-size:12px}
-  .hero-shell{width:min(100% - 28px,1500px)}
-  .eyebrow{font-size:13px}
-  h1{font-size:58px}
-  .deck{font-size:17px}
-  .hero-image-wrap{min-height:300px}
+  .talk-button{
+    width:auto;
+    padding:13px 16px;
+    font-size:12px;
+  }
+  .hero-shell{
+    width:min(100% - 24px,1440px);
+  }
+  .hero-copy{
+    padding:34px 0 28px;
+  }
+  .eyebrow{
+    white-space:normal;
+    font-size:12px;
+  }
+  h1{
+    font-size:54px;
+  }
+  .deck{
+    font-size:16px;
+  }
+  .hero-actions a{
+    min-width:0;
+    width:100%;
+  }
 }
