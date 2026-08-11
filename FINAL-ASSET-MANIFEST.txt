@@ -1,0 +1,31 @@
+STRATEGY BAG — FINAL LOGO ASSET SET
+===================================
+
+This production package uses the clean V2 HTML/CSS hero architecture and
+incorporates the final logo corrections made during the later revisions.
+
+REPRESENTATIVE EXPERIENCE — EXACT ORDER
+---------------------------------------
+1. Heineken
+2. Mobil 1
+3. Esso
+4. Direct Energy
+5. Lactaid
+
+FINAL LOGO CORRECTIONS INCLUDED
+-------------------------------
+- STRATEGY BAG: exact user-provided logo
+- Heineken: clean corrected version
+- Mobil 1: clean corrected version
+- Esso: clean corrected version
+- Direct Energy: final cleaned version with the stray divider/artifact removed
+- Lactaid: clean corrected version
+- Selected Experience Heineken card: uses the same clean Heineken logo
+
+HERO
+----
+The hero is NOT a static screenshot.
+Text, navigation, buttons, headline and slogan are real HTML/CSS.
+Only the rocket/cloud artwork is rasterized.
+
+This is the recommended clean production package going forward.
