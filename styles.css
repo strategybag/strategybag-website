@@ -240,3 +240,71 @@ footer p{margin:0;color:#adbac8;font-size:10px}
   .brand-logo{border-right:0 !important;border-bottom:1px solid var(--line);}
   .hero-art{aspect-ratio:604 / 340;}
 }
+
+
+/* HOTFIX 4 — final hero and representative-logo normalization */
+.hero-grid{
+  align-items:stretch;
+}
+.hero-art{
+  position:relative;
+  width:100%;
+  aspect-ratio:604 / 340 !important;
+  min-height:0 !important;
+  overflow:hidden;
+  background:#0b67a7;
+}
+.rocket-img{
+  position:absolute !important;
+  inset:0 !important;
+  display:block !important;
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+}
+
+.brand-experience .container{
+  overflow:visible;
+}
+.brand-logo-grid{
+  display:grid !important;
+  grid-template-columns:repeat(5,minmax(0,1fr)) !important;
+  align-items:center !important;
+  width:100% !important;
+}
+.brand-logo{
+  height:108px !important;
+  min-width:0 !important;
+  padding:14px 22px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  overflow:hidden !important;
+}
+.brand-logo img{
+  display:block !important;
+  width:100% !important;
+  height:100% !important;
+  max-width:260px !important;
+  max-height:78px !important;
+  object-fit:contain !important;
+  object-position:center !important;
+}
+@media(max-width:980px){
+  .brand-logo-grid{
+    grid-template-columns:repeat(5,minmax(0,1fr)) !important;
+  }
+  .brand-logo{
+    height:92px !important;
+    padding:10px !important;
+  }
+}
+@media(max-width:720px){
+  .brand-logo-grid{
+    grid-template-columns:repeat(2,1fr) !important;
+  }
+  .hero-art{
+    aspect-ratio:604 / 340 !important;
+  }
+}
