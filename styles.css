@@ -673,152 +673,183 @@ section{
 
 
 /* ============================================================
-   LIVE SCALE + HERO CORRECTION
-   Built from the stylesheet currently served by GitHub Pages.
+   FULL-WIDTH SCALE + SOFT LEFT HERO FADE
+   Minimal CSS-only correction.
    ============================================================ */
 
-/* Let the whole site use more of larger screens. */
-.container{
-  width:min(1540px,calc(100% - 32px));
-}
+@media(min-width:1201px){
 
-/* Desktop/header scale */
-@media(min-width:1051px){
+  /* Use almost the full browser width instead of the old constrained canvas. */
+  .container,
+  .header-inner,
+  .hero-grid{
+    width:calc(100% - 32px) !important;
+    max-width:none !important;
+    margin-left:auto !important;
+    margin-right:auto !important;
+  }
+
+  /* Increase overall desktop scale. */
   .header-inner{
-    width:min(1540px,calc(100% - 32px));
-    min-height:104px;
-    grid-template-columns:205px 1fr 220px;
+    min-height:104px !important;
+    grid-template-columns:205px 1fr 220px !important;
   }
 
   .brand img{
-    width:182px;
-    max-height:88px;
+    width:180px !important;
+    max-height:88px !important;
   }
 
   .main-nav{
-    gap:clamp(32px,3.3vw,56px);
+    gap:clamp(34px,3.5vw,62px) !important;
   }
 
   .main-nav a{
-    font-size:14px;
-    padding:39px 0 31px;
+    font-size:14px !important;
+    padding:39px 0 31px !important;
   }
 
   .header-cta{
-    min-width:205px;
-    padding:17px 24px;
-    font-size:14px;
+    min-width:205px !important;
+    padding:17px 24px !important;
+    font-size:14px !important;
   }
 
-  /* Hero uses the full desktop composition rather than the smaller <=1200px version. */
+  /* Hero fills the screen more aggressively. */
   .hero-grid{
-    width:min(1540px,calc(100% - 32px));
-    grid-template-columns:39% 61%;
-    min-height:610px;
+    grid-template-columns:39% 61% !important;
+    min-height:590px !important;
   }
 
   .hero-copy{
-    padding:54px 38px 48px 0;
+    padding:52px 38px 46px 18px !important;
   }
 
   .eyebrow{
-    font-size:17px;
-    letter-spacing:.20em;
-    margin-bottom:22px;
+    font-size:17px !important;
+    letter-spacing:.20em !important;
+    margin-bottom:22px !important;
   }
 
   .hero h1{
-    font-size:clamp(76px,6.6vw,104px);
-    line-height:.85;
+    font-size:clamp(78px,6.8vw,108px) !important;
+    line-height:.85 !important;
   }
 
   .hero-deck{
-    max-width:610px;
-    font-size:20px;
-    line-height:1.45;
+    max-width:650px !important;
+    font-size:20px !important;
+    line-height:1.46 !important;
   }
 
   .hero-actions{
-    margin-top:30px;
+    margin-top:30px !important;
   }
 
   .hero-actions .button{
-    min-width:230px;
-    padding:17px 24px;
-    font-size:13px;
+    min-width:235px !important;
+    padding:17px 24px !important;
+    font-size:13px !important;
   }
 
-  /* Right side fills the hero vertically with no inset image box. */
   .hero-visual{
-    min-height:610px;
-    aspect-ratio:auto;
+    min-height:590px !important;
+    aspect-ratio:auto !important;
     background:
       linear-gradient(
         90deg,
         #ffffff 0%,
-        #f8fcfd 7%,
-        #e8f6fb 15%,
-        #c6e8f7 26%,
-        #83c7eb 41%,
-        #3c9fd9 59%,
-        #2085c9 76%,
-        #0e66b2 100%
-      );
+        #fbfdfe 6%,
+        #eef8fc 14%,
+        #d8eff9 23%,
+        #afdbee 34%,
+        #79c0e5 47%,
+        #45a0d7 62%,
+        #2585c6 79%,
+        #1169b4 100%
+      ) !important;
   }
 
-  /* Use the portrait rocket image by height, not by percentage width.
-     This prevents the small boxed appearance. */
+  /* Fade the actual rocket image softly into white on the left.
+     This removes the visible vertical seam/hard image edge. */
   .rocket-scene{
-    left:5%;
-    top:auto;
-    bottom:-2%;
-    width:auto;
-    height:104%;
-    max-width:none;
-    object-fit:contain;
-    object-position:center bottom;
+    left:2% !important;
+    bottom:-2% !important;
+    width:auto !important;
+    height:104% !important;
+    max-width:none !important;
+    object-fit:contain !important;
+    object-position:center bottom !important;
+
+    -webkit-mask-image:linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(0,0,0,.10) 4%,
+      rgba(0,0,0,.50) 10%,
+      #000 18%,
+      #000 100%
+    ) !important;
+    mask-image:linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(0,0,0,.10) 4%,
+      rgba(0,0,0,.50) 10%,
+      #000 18%,
+      #000 100%
+    ) !important;
   }
 
   .hero-slogan{
-    right:4%;
-    top:19%;
-    width:260px;
-    max-width:31%;
-    font-size:clamp(23px,1.8vw,29px);
-    line-height:1.15;
+    right:4.5% !important;
+    top:19% !important;
+    width:285px !important;
+    max-width:31% !important;
+    font-size:clamp(24px,1.9vw,31px) !important;
+    line-height:1.14 !important;
   }
 
   .hero-slogan span{
-    width:112px;
+    width:115px !important;
   }
 
   .brand-ribbons{
-    right:-38px;
-    bottom:-116px;
-    width:152px;
-    height:590px;
+    right:-38px !important;
+    bottom:-115px !important;
+    width:155px !important;
+    height:590px !important;
+  }
+
+  /* Keep Representative Experience visually proportional after the hero grows. */
+  .representative{
+    padding-top:24px !important;
+  }
+
+  .section-title-rule .section-kicker{
+    font-size:17px !important;
+  }
+
+  .logo-cell{
+    height:108px !important;
   }
 }
 
-/* Large desktop: allow the composition to breathe even more. */
-@media(min-width:1450px){
-  .hero-grid{
-    min-height:650px;
+@media(min-width:1600px){
+  .hero-grid,
+  .hero-visual{
+    min-height:640px !important;
   }
 
-  .hero-visual{
-    min-height:650px;
+  .hero h1{
+    font-size:112px !important;
   }
 
   .rocket-scene{
-    left:7%;
-    height:106%;
+    height:107% !important;
+    left:4% !important;
   }
 
   .hero-slogan{
-    width:285px;
-    font-size:30px;
+    width:305px !important;
+    font-size:32px !important;
   }
 }
-
-/* Keep tablet/mobile behavior intact. */
