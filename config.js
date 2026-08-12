@@ -1,5 +1,5 @@
 window.STRATEGY_BAG_CONFIG = {
-  email: "INFO@STRATEGYBAG.COM",
-  linkedin: "https://www.linkedin.com/company/strategybag-marketing",
+  email: "YOUR_EMAIL@YOURDOMAIN.COM",
+  linkedin: "https://www.linkedin.com/",
   consultationSubject: "STRATEGY BAG consultation inquiry"
 };
