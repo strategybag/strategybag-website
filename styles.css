@@ -1066,3 +1066,105 @@ section{
     outline:0 !important;
   }
 }
+
+
+/* ============================================================
+   HERO SKY-EXTENSION + SLOGAN SEPARATION FIX — 2026-08-12
+   - No dedicated blue panel
+   - Sky extends naturally to the right
+   - Slogan stays clear of rocket
+   - Preserves current top-seam fix
+   - Desktop hero only
+   ============================================================ */
+
+@media(min-width:1201px){
+
+  .hero-visual{
+    position:relative !important;
+    overflow:hidden !important;
+
+    /* Extend sky color across the full right side. */
+    background:
+      radial-gradient(
+        circle at 75% 24%,
+        rgba(105,193,241,.30) 0%,
+        rgba(105,193,241,.14) 24%,
+        rgba(105,193,241,0) 52%
+      ),
+      linear-gradient(
+        90deg,
+        #ffffff 0%,
+        #f8fcfd 6%,
+        #e9f7fb 14%,
+        #cbeaf8 24%,
+        #93d0ef 38%,
+        #5cb3e4 53%,
+        #339bd7 68%,
+        #1684cd 83%,
+        #0873c4 100%
+      ) !important;
+  }
+
+  /* Remove any prior dedicated right-panel overlay. */
+  .hero-visual::after{
+    content:none !important;
+    display:none !important;
+  }
+
+  /* Keep rocket left/center and preserve the top-seam fix. */
+  .rocket-scene{
+    left:0.5% !important;
+    right:auto !important;
+    top:-4px !important;
+    bottom:auto !important;
+
+    width:auto !important;
+    height:calc(104% + 8px) !important;
+    max-width:66% !important;
+
+    object-fit:contain !important;
+    object-position:left bottom !important;
+
+    z-index:2 !important;
+    display:block !important;
+    border:0 !important;
+    outline:0 !important;
+  }
+
+  /* Put slogan entirely in open sky on the far right. */
+  .hero-slogan{
+    right:2.5% !important;
+    top:18% !important;
+
+    width:25% !important;
+    max-width:320px !important;
+
+    font-size:clamp(25px,1.75vw,31px) !important;
+    line-height:1.15 !important;
+
+    text-align:left !important;
+    z-index:7 !important;
+  }
+
+  .hero-slogan span{
+    width:112px !important;
+  }
+
+  .brand-ribbons{
+    z-index:4 !important;
+  }
+}
+
+@media(min-width:1600px){
+  .rocket-scene{
+    left:1.5% !important;
+    max-width:67% !important;
+  }
+
+  .hero-slogan{
+    right:3% !important;
+    width:23% !important;
+    max-width:335px !important;
+    font-size:32px !important;
+  }
+}
