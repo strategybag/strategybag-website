@@ -446,3 +446,227 @@ section{
     font-size:32px;
   }
 }
+
+
+/* ============================================================
+   HEADER + HERO MINIMUM FIX
+   Changes ONLY the header/hero presentation.
+   ============================================================ */
+
+/* Restore the larger visual scale shown in the approved concept. */
+.header-inner,
+.hero-grid{
+  width:min(1540px,calc(100% - 28px));
+  max-width:none;
+}
+
+/* Header proportions */
+.header-inner{
+  min-height:96px;
+  grid-template-columns:190px 1fr 210px;
+}
+
+.brand img{
+  width:170px;
+  max-height:82px;
+}
+
+.main-nav{
+  gap:clamp(28px,3vw,50px);
+}
+
+.main-nav a{
+  font-size:14px;
+  padding:36px 0 29px;
+}
+
+.header-cta{
+  min-width:195px;
+  padding:16px 24px;
+  font-size:14px;
+}
+
+/* Hero: larger, screen-filling composition */
+.hero-grid{
+  grid-template-columns:40% 60%;
+  min-height:540px;
+  align-items:stretch;
+}
+
+.hero-copy{
+  padding:46px 34px 42px 0;
+}
+
+.eyebrow{
+  font-size:16px;
+  letter-spacing:.20em;
+  margin-bottom:20px;
+}
+
+.hero h1{
+  font-size:clamp(72px,6.2vw,96px);
+  line-height:.86;
+}
+
+.hero-deck{
+  max-width:610px;
+  font-size:19px;
+  line-height:1.45;
+}
+
+.hero-actions{
+  margin-top:28px;
+}
+
+.hero-actions .button{
+  min-width:220px;
+  padding:16px 22px;
+  font-size:13px;
+}
+
+/* Clean right panel. */
+.hero-visual{
+  min-height:540px;
+  aspect-ratio:auto;
+  background:
+    linear-gradient(
+      90deg,
+      #ffffff 0%,
+      #f7fbfd 8%,
+      #e6f5fb 17%,
+      #c7e8f7 28%,
+      #83c5e9 43%,
+      #3b9bd6 61%,
+      #1d7fc3 79%,
+      #0c61ad 100%
+    );
+}
+
+/* Clean rocket-only artwork: no baked-in text or button fragments. */
+.rocket-scene{
+  left:6%;
+  top:0;
+  bottom:0;
+  width:55%;
+  height:100%;
+  object-fit:contain;
+  object-position:center bottom;
+  z-index:2;
+}
+
+/* Keep slogan completely inside the visible panel. */
+.hero-slogan{
+  right:5%;
+  top:19%;
+  width:275px;
+  max-width:31%;
+  font-size:clamp(23px,1.8vw,29px);
+  line-height:1.15;
+}
+
+.hero-slogan span{
+  width:112px;
+  height:5px;
+}
+
+/* Keep ribbons at the right edge without crowding the slogan. */
+.brand-ribbons{
+  right:-34px;
+  bottom:-110px;
+  width:150px;
+  height:580px;
+}
+
+@media(max-width:1200px){
+  .header-inner,
+  .hero-grid{
+    width:calc(100% - 24px);
+  }
+
+  .header-inner{
+    grid-template-columns:155px 1fr 180px;
+  }
+
+  .brand img{width:140px;}
+  .main-nav{gap:24px;}
+  .main-nav a{font-size:12px;}
+  .header-cta{min-width:165px;font-size:12px;}
+
+  .hero-grid{
+    min-height:500px;
+  }
+
+  .hero h1{
+    font-size:clamp(64px,6.1vw,82px);
+  }
+
+  .hero-visual{
+    min-height:500px;
+  }
+
+  .rocket-scene{
+    width:58%;
+    left:4%;
+  }
+
+  .hero-slogan{
+    right:4%;
+    width:245px;
+    max-width:32%;
+    font-size:23px;
+  }
+}
+
+@media(max-width:1050px){
+  .header-inner{
+    min-height:84px;
+  }
+
+  .hero-grid{
+    grid-template-columns:1fr;
+    min-height:0;
+  }
+
+  .hero-copy{
+    padding-right:0;
+  }
+
+  .hero-visual{
+    min-height:430px;
+  }
+}
+
+@media(max-width:720px){
+  .header-inner{
+    width:calc(100% - 24px);
+  }
+
+  .brand img{
+    width:120px;
+  }
+
+  .hero h1{
+    font-size:54px;
+  }
+
+  .hero-deck{
+    font-size:16px;
+  }
+
+  .hero-visual{
+    min-height:360px;
+  }
+
+  .rocket-scene{
+    left:-4%;
+    width:78%;
+  }
+
+  .hero-slogan{
+    right:12px;
+    top:22px;
+    width:180px;
+    max-width:43%;
+    font-size:18px;
+  }
+}
