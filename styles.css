@@ -161,31 +161,49 @@ footer p{margin:0;color:#adbac8;font-size:10px}
 
 
 /* ============================================================
-   FINAL LIVE HERO / IMPACT OVERRIDES
-   Built against the current GitHub index.html and styles.css.
+   FINAL CORRECTIONS — 2026-08-11
+   1) Clean rocket-only hero image; no baked-in headline fragments.
+   2) Keep right slogan fully visible and balanced.
+   3) Reduce About headline scale to match the rest of the site.
    ============================================================ */
 
-/* Keep section anchor navigation below sticky header */
-section{
-  scroll-margin-top:90px;
-}
-
-/* Selected Experience — green Heineken text */
-.heineken-text{
-  color:#00723f;
-  -webkit-text-fill-color:#00723f;
-  font-size:26px;
-  font-weight:900;
-  letter-spacing:-.02em;
-  line-height:1;
-  text-transform:none;
-  height:50px;
-  display:flex;
+.hero-grid{
+  grid-template-columns:40% 60%;
   align-items:center;
-  margin-bottom:14px;
 }
 
-/* About heading scale */
+.hero-visual{
+  aspect-ratio:1.70 / 1;
+  min-height:0;
+  background:linear-gradient(118deg,#dff5fb 0%,#238dcc 54%,#0753a3 100%);
+}
+
+.rocket-scene{
+  left:0;
+  top:0;
+  bottom:0;
+  width:67%;
+  height:100%;
+  object-fit:cover;
+  object-position:center bottom;
+}
+
+.hero-slogan{
+  right:42px;
+  top:16%;
+  width:250px;
+  font-size:clamp(20px,1.55vw,25px);
+  line-height:1.16;
+}
+
+.brand-ribbons{
+  right:-20px;
+  bottom:-105px;
+  width:158px;
+  height:560px;
+}
+
+/* About section: remove the oversized headline treatment shown in the live render. */
 .about{
   padding-top:58px;
   padding-bottom:58px;
@@ -207,215 +225,167 @@ section{
   line-height:1.55;
 }
 
-/* HERO — clean split layout, no hard blue band */
-.hero{
-  overflow:hidden;
-  background:#fff;
-}
-
-.hero-grid{
-  grid-template-columns:40% 60%;
-  min-height:0;
-  align-items:stretch;
-}
-
-.hero-copy{
-  padding:40px 30px 38px 0;
-}
-
-.eyebrow{
-  white-space:nowrap;
-  font-size:clamp(12px,1.05vw,16px);
-  letter-spacing:.19em;
-  line-height:1.2;
-}
-
-.hero h1{
-  font-size:clamp(56px,5.35vw,82px);
-  line-height:.87;
-}
-
-.hero-deck{
-  max-width:550px;
-  font-size:clamp(15px,1.15vw,18px);
-  line-height:1.42;
-}
-
-.hero-visual{
-  position:relative;
-  min-width:0;
-  overflow:hidden;
-  aspect-ratio:1.78/1;
-  background:
-    linear-gradient(
-      90deg,
-      #ffffff 0%,
-      #fbfdfe 8%,
-      #eef8fc 18%,
-      #d7eff9 30%,
-      #9fd2ee 45%,
-      #58ace0 62%,
-      #2487c9 80%,
-      #0b62ae 100%
-    );
-}
-
-/* Current live HTML uses rocket-scene.jpg.
-   Keep it fully visible and shift it left so the slogan has room. */
-.rocket-scene{
-  position:absolute;
-  left:2%;
-  top:0;
-  bottom:0;
-  width:60%;
-  height:100%;
-  max-width:none;
-  object-fit:contain;
-  object-position:center bottom;
-  z-index:2;
-}
-
-/* Sharp HTML slogan, fully inside the hero */
-.hero-slogan{
-  position:absolute;
-  right:5%;
-  top:18%;
-  width:255px;
-  max-width:30%;
-  color:#fff;
-  font-size:clamp(20px,1.45vw,24px);
-  font-weight:900;
-  line-height:1.17;
-  white-space:normal;
-  z-index:6;
-  text-shadow:0 2px 6px rgba(0,0,0,.16);
-}
-
-.hero-slogan span{
-  display:block;
-  width:105px;
-  height:5px;
-  margin-top:15px;
-  background:#57d45e;
-}
-
-/* CSS ribbons remain crisp */
-.brand-ribbons{
-  position:absolute;
-  right:-36px;
-  bottom:-116px;
-  width:145px;
-  height:565px;
-  transform:rotate(23deg);
-  opacity:.86;
-  z-index:4;
-}
-
-.brand-ribbons i{
-  position:absolute;
-  top:0;
-  bottom:0;
-  width:45px;
-}
-
-.brand-ribbons i:nth-child(1){left:0;background:#31ba61}
-.brand-ribbons i:nth-child(2){left:47px;background:#218fc7}
-.brand-ribbons i:nth-child(3){left:94px;background:#0d4fa5}
-
-/* Impact statement — exactly two lines on desktop */
-.impact-grid{
-  grid-template-columns:
-    1.05fr
-    repeat(5,minmax(82px,1fr))
-    minmax(320px,1.85fr);
-}
-
-.impact-callout{
-  min-width:320px;
-  padding:16px 22px;
-  font-size:12px;
-  line-height:1.28;
-  white-space:normal;
-}
-
-.impact-callout span{
-  display:block;
-  white-space:nowrap;
+/* Keep desktop hero body copy balanced with no single-word lines. */
+@media(min-width:1051px){
+  .hero-deck{
+    max-width:560px;
+  }
+  .hero-deck span{
+    display:block;
+    white-space:nowrap;
+  }
 }
 
 @media(max-width:1050px){
-  .hero-grid{
-    grid-template-columns:1fr;
-  }
-
-  .hero-copy{
-    padding-right:0;
-  }
-
-  .hero-deck span{
-    display:inline;
-    white-space:normal;
-  }
-
-  .hero-deck span:not(:last-child)::after{
-    content:" ";
-  }
-
   .hero-visual{
-    aspect-ratio:1.58/1;
+    aspect-ratio:1.65 / 1;
   }
-
   .rocket-scene{
-    left:0;
-    width:66%;
+    width:70%;
   }
-
-  .hero-slogan{
-    right:3%;
-    max-width:34%;
-  }
-
-  .impact-callout{
-    min-width:0;
-  }
-
-  .impact-callout span{
-    white-space:normal;
+  .about h2{
+    font-size:38px;
   }
 }
 
 @media(max-width:720px){
-  .hero-copy{
-    padding-top:36px;
-  }
-
-  .eyebrow{
-    white-space:normal;
-    font-size:12px;
-  }
-
-  .hero h1{
-    font-size:52px;
-  }
-
   .hero-visual{
-    aspect-ratio:1.18/1;
+    aspect-ratio:1.28 / 1;
   }
-
   .rocket-scene{
-    left:-6%;
-    width:80%;
+    width:100%;
+    opacity:.82;
   }
-
   .hero-slogan{
-    right:12px;
-    top:22px;
-    width:180px;
-    max-width:42%;
-    font-size:17px;
+    right:16px;
+    top:20px;
+    width:200px;
+    font-size:19px;
   }
-
   .about h2{
     font-size:32px;
   }
+}
+
+
+/* SELECTED EXPERIENCE — Heineken text treatment */
+.heineken-text{
+  color:#00723f;
+  font-size:26px;
+  font-weight:900;
+  letter-spacing:-.02em;
+  line-height:1;
+  text-transform:none;
+  height:50px;
+  display:flex;
+  align-items:center;
+  margin-bottom:14px;
+}
+
+
+/* ============================================================
+   COMPLETE REBUILD v4 — HERO SCALE + HEINEKEN COLOR FIX
+   ============================================================ */
+
+/* Keep the rocket fully visible. Do not crop/zoom it. */
+.hero-visual{
+  aspect-ratio:1.74 / 1 !important;
+  overflow:hidden !important;
+  background:
+    radial-gradient(circle at 38% 72%, rgba(255,208,112,.45), transparent 27%),
+    linear-gradient(118deg,#dff5fb 0%,#2c9bd6 48%,#0753a3 100%) !important;
+}
+
+.rocket-scene{
+  position:absolute !important;
+  left:8% !important;
+  top:0 !important;
+  bottom:auto !important;
+  width:58% !important;
+  height:100% !important;
+  max-width:none !important;
+  object-fit:contain !important;
+  object-position:center bottom !important;
+  opacity:1 !important;
+}
+
+/* Keep slogan clear of the rocket and fully inside the hero. */
+.hero-slogan{
+  right:34px !important;
+  top:17% !important;
+  width:245px !important;
+  font-size:clamp(20px,1.5vw,24px) !important;
+  line-height:1.16 !important;
+  z-index:5 !important;
+}
+
+/* Preserve the approved right-edge color ribbons. */
+.brand-ribbons{
+  right:-28px !important;
+  bottom:-108px !important;
+  width:150px !important;
+  height:560px !important;
+  z-index:3 !important;
+}
+
+/* Selected Experience: Heineken text must be brand green, not navy. */
+.heineken-text{
+  color:#00723f !important;
+  -webkit-text-fill-color:#00723f !important;
+  font-size:26px !important;
+  font-weight:900 !important;
+  letter-spacing:-.02em !important;
+  text-transform:none !important;
+}
+
+/* Keep all three selected-experience brand names aligned. */
+.wordmark,
+.heineken-text{
+  height:50px !important;
+  display:flex !important;
+  align-items:center !important;
+  margin-bottom:14px !important;
+}
+
+@media(max-width:1050px){
+  .hero-visual{
+    aspect-ratio:1.62 / 1 !important;
+  }
+  .rocket-scene{
+    left:6% !important;
+    width:62% !important;
+  }
+}
+
+@media(max-width:720px){
+  .hero-visual{
+    aspect-ratio:1.25 / 1 !important;
+  }
+  .rocket-scene{
+    left:-4% !important;
+    width:78% !important;
+    height:100% !important;
+  }
+  .hero-slogan{
+    right:14px !important;
+    top:18px !important;
+    width:190px !important;
+    font-size:18px !important;
+  }
+}
+
+
+/* ===== v5 Hero polish ===== */
+.hero-visual{
+  background:
+    linear-gradient(90deg,#fff 0%,#fff 24%,#eef9ff 38%,#c8e9fb 52%,#5baee3 70%,#1c77c3 100%) !important;
+}
+.rocket-scene{
+  object-fit:contain !important;
+  object-position:center bottom !important;
+}
+.footer-callout{
+  max-width:430px !important;
+  line-height:1.15 !important;
+  text-wrap:balance;
 }
