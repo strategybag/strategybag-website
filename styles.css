@@ -853,3 +853,194 @@ section{
     font-size:32px !important;
   }
 }
+
+
+/* ============================================================
+   DESKTOP CONTENT SCALE-UP
+   Keeps the full-width layout, but increases typography,
+   buttons, logos, cards and section spacing on desktop only.
+   Mobile/tablet remain unchanged.
+   ============================================================ */
+
+@media(min-width:1201px){
+
+  /* Header */
+  .brand img{
+    width:195px !important;
+    max-height:94px !important;
+  }
+
+  .main-nav a{
+    font-size:16px !important;
+  }
+
+  .header-cta{
+    min-width:220px !important;
+    font-size:15px !important;
+    padding:18px 26px !important;
+  }
+
+  /* Hero */
+  .eyebrow{
+    font-size:18px !important;
+  }
+
+  .hero h1{
+    font-size:clamp(88px,7.2vw,118px) !important;
+  }
+
+  .hero-deck{
+    max-width:690px !important;
+    font-size:22px !important;
+    line-height:1.46 !important;
+  }
+
+  .hero-actions .button{
+    min-width:250px !important;
+    padding:18px 26px !important;
+    font-size:15px !important;
+  }
+
+  .hero-slogan{
+    width:310px !important;
+    font-size:clamp(27px,2vw,34px) !important;
+  }
+
+  /* Representative Experience */
+  .representative{
+    padding-top:30px !important;
+    padding-bottom:26px !important;
+  }
+
+  .section-title-rule .section-kicker{
+    font-size:20px !important;
+  }
+
+  .section-subtitle{
+    font-size:16px !important;
+  }
+
+  .logo-cell{
+    height:125px !important;
+    padding:12px 24px !important;
+  }
+
+  .logo-cell img{
+    max-width:250px !important;
+    max-height:88px !important;
+  }
+
+  .disclaimer{
+    font-size:12px !important;
+  }
+
+  /* Main sections */
+  .section{
+    padding-top:78px !important;
+    padding-bottom:78px !important;
+  }
+
+  .section-kicker{
+    font-size:15px !important;
+  }
+
+  h2{
+    font-size:46px !important;
+  }
+
+  .section-intro>p:not(.section-kicker),
+  .about-inner>p:last-child{
+    font-size:19px !important;
+  }
+
+  /* Capability cards */
+  .capability-card{
+    min-height:135px !important;
+    padding:22px !important;
+  }
+
+  .capability-card h3{
+    font-size:18px !important;
+  }
+
+  .capability-card p{
+    font-size:14px !important;
+  }
+
+  /* Impact */
+  .impact{
+    padding-top:28px !important;
+    padding-bottom:28px !important;
+  }
+
+  .impact-label{
+    font-size:14px !important;
+  }
+
+  .metric strong{
+    font-size:40px !important;
+  }
+
+  .metric span{
+    font-size:14px !important;
+  }
+
+  .impact-callout{
+    font-size:14px !important;
+  }
+
+  /* Selected Experience */
+  .case-card{
+    padding:28px !important;
+  }
+
+  .case-card h3{
+    font-size:18px !important;
+  }
+
+  .case-card p{
+    font-size:15px !important;
+  }
+
+  .wordmark,
+  .heineken-text{
+    font-size:30px !important;
+  }
+
+  /* Insights */
+  .insight-visual{
+    height:105px !important;
+  }
+
+  .tag{
+    font-size:12px !important;
+  }
+
+  .insight-card h3{
+    font-size:18px !important;
+  }
+
+  .insight-meta,
+  .insight-summary{
+    font-size:13px !important;
+  }
+
+  /* CTA + footer */
+  .cta-band{
+    padding-top:34px !important;
+    padding-bottom:34px !important;
+  }
+
+  .cta-copy h2{
+    font-size:32px !important;
+  }
+
+  .cta-copy p{
+    font-size:18px !important;
+  }
+
+  footer nav a,
+  footer p{
+    font-size:12px !important;
+  }
+}
