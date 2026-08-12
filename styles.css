@@ -1044,3 +1044,25 @@ section{
     font-size:12px !important;
   }
 }
+
+
+/* ============================================================
+   HERO TOP-SEAM FIX — 2026-08-12
+   Removes the thin white line above the rocket image only.
+   No other layout/content changes.
+   ============================================================ */
+
+@media(min-width:1201px){
+  .hero-visual{
+    overflow:hidden !important;
+  }
+
+  .rocket-scene{
+    top:-4px !important;
+    bottom:auto !important;
+    height:calc(104% + 8px) !important;
+    display:block !important;
+    border:0 !important;
+    outline:0 !important;
+  }
+}
