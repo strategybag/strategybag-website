@@ -373,3 +373,19 @@ footer p{margin:0;color:#adbac8;font-size:10px}
     font-size:18px !important;
   }
 }
+
+
+/* ===== v5 Hero polish ===== */
+.hero-visual{
+  background:
+    linear-gradient(90deg,#fff 0%,#fff 24%,#eef9ff 38%,#c8e9fb 52%,#5baee3 70%,#1c77c3 100%) !important;
+}
+.rocket-scene{
+  object-fit:contain !important;
+  object-position:center bottom !important;
+}
+.footer-callout{
+  max-width:430px !important;
+  line-height:1.15 !important;
+  text-wrap:balance;
+}
