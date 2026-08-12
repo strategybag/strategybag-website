@@ -1,79 +1,31 @@
-STRATEGY BAG — COMPLETE REBUILD
-===============================
+STRATEGY BAG — APPROVED MOCKUP HYBRID PATCH
+============================================
 
-This is a clean rebuild from scratch using the approved mockup as the design specification.
+MINIMUM FILE REPLACEMENT: TWO FILES ONLY
 
-INCORPORATED CORRECTIONS
-------------------------
-- STRATEGY BAG is always capitalized; no LLC.
-- Headline: UNLEASH BRAND POWER.
-- Hero slogan: BETTER BRANDS. FASTER GROWTH. BIGGER IMPACT.
-- Real HTML/CSS for navigation, headline, supporting copy, buttons and slogan.
-- Only the rocket/sky/cloud scene is raster artwork.
-- No legacy CSS overrides or accumulated hotfixes.
-- No horizontal overflow.
-- Hero body copy deliberately avoids single-word orphan lines on desktop.
-- Representative Experience heading is exactly "REPRESENTATIVE EXPERIENCE".
-- Representative logo order:
-  1. Heineken
-  2. Mobil 1
-  3. Esso
-  4. Direct Energy
-  5. Lactaid
-- Final cleaned Direct Energy logo included.
-- Clean Heineken logo reused in Selected Experience.
-- Three Insights cards always remain visible as fallback content.
-- Insights automation only replaces them when all three categories are available.
-- Complete site includes: hero, representative experience, capabilities, impact,
-  selected experience, insights, about, call-to-action and footer.
-- Responsive desktop, tablet and mobile layout.
+Replace:
+1. styles.css
+2. rocket-scene.jpg
 
-FILE STRUCTURE
---------------
-All page-loaded files are at repository root to avoid path problems:
-index.html
-styles.css
-script.js
-config.js
-insights.json
-update_insights.py
-strategy-bag-logo.jpg
-favicon.png
-rocket-scene.jpg
-heineken.png
-mobil1.png
-esso.png
-direct-energy.png
-lactaid.png
+DO NOT replace index.html.
 
-Only the GitHub Actions workflow is nested:
-.github/workflows/refresh-insights.yml
+Why only two files:
+Your current v5 index.html already has the correct hybrid architecture:
+- real HTML navigation
+- real HTML UNLEASH BRAND POWER headline
+- real HTML supporting copy
+- real HTML buttons
+- real HTML BETTER BRANDS / FASTER GROWTH / BIGGER IMPACT slogan
+- separate rocket-scene.jpg image
+- CSS ribbons
 
-BEFORE PUBLISHING
------------------
-Edit config.js:
-- replace YOUR_EMAIL@YOURDOMAIN.COM with your STRATEGY BAG email
-- replace https://www.linkedin.com/ with the desired LinkedIn URL
+This patch simply changes how that existing structure is rendered so it
+matches the approved mockup more closely.
 
-GITHUB PAGES
-------------
-1. Remove the old website files from the repository.
-2. Upload everything in this package, preserving .github/workflows/.
-3. Settings > Pages.
-4. Source: Deploy from a branch.
-5. Branch: main.
-6. Folder: /(root).
-7. Save.
-8. Wait 1–3 minutes.
-9. Hard refresh with Ctrl + F5.
+The new rocket-scene.jpg contains ONLY rocket/sky/cloud artwork. It contains
+no navigation, headline, buttons or slogan text.
 
-AUTOMATED INSIGHTS
-------------------
-If GitHub Actions cannot write:
-Settings > Actions > General > Workflow permissions
-Select "Read and write permissions".
-
-GODADDY / EMAIL
----------------
-This rebuild does not require changing email-related DNS records.
-Do not delete MX, SPF, DKIM or other business-email records.
+After upload:
+1. Commit both files.
+2. Wait for GitHub Pages.
+3. Ctrl + F5.
