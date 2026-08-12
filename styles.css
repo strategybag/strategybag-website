@@ -670,3 +670,155 @@ section{
     font-size:18px;
   }
 }
+
+
+/* ============================================================
+   LIVE SCALE + HERO CORRECTION
+   Built from the stylesheet currently served by GitHub Pages.
+   ============================================================ */
+
+/* Let the whole site use more of larger screens. */
+.container{
+  width:min(1540px,calc(100% - 32px));
+}
+
+/* Desktop/header scale */
+@media(min-width:1051px){
+  .header-inner{
+    width:min(1540px,calc(100% - 32px));
+    min-height:104px;
+    grid-template-columns:205px 1fr 220px;
+  }
+
+  .brand img{
+    width:182px;
+    max-height:88px;
+  }
+
+  .main-nav{
+    gap:clamp(32px,3.3vw,56px);
+  }
+
+  .main-nav a{
+    font-size:14px;
+    padding:39px 0 31px;
+  }
+
+  .header-cta{
+    min-width:205px;
+    padding:17px 24px;
+    font-size:14px;
+  }
+
+  /* Hero uses the full desktop composition rather than the smaller <=1200px version. */
+  .hero-grid{
+    width:min(1540px,calc(100% - 32px));
+    grid-template-columns:39% 61%;
+    min-height:610px;
+  }
+
+  .hero-copy{
+    padding:54px 38px 48px 0;
+  }
+
+  .eyebrow{
+    font-size:17px;
+    letter-spacing:.20em;
+    margin-bottom:22px;
+  }
+
+  .hero h1{
+    font-size:clamp(76px,6.6vw,104px);
+    line-height:.85;
+  }
+
+  .hero-deck{
+    max-width:610px;
+    font-size:20px;
+    line-height:1.45;
+  }
+
+  .hero-actions{
+    margin-top:30px;
+  }
+
+  .hero-actions .button{
+    min-width:230px;
+    padding:17px 24px;
+    font-size:13px;
+  }
+
+  /* Right side fills the hero vertically with no inset image box. */
+  .hero-visual{
+    min-height:610px;
+    aspect-ratio:auto;
+    background:
+      linear-gradient(
+        90deg,
+        #ffffff 0%,
+        #f8fcfd 7%,
+        #e8f6fb 15%,
+        #c6e8f7 26%,
+        #83c7eb 41%,
+        #3c9fd9 59%,
+        #2085c9 76%,
+        #0e66b2 100%
+      );
+  }
+
+  /* Use the portrait rocket image by height, not by percentage width.
+     This prevents the small boxed appearance. */
+  .rocket-scene{
+    left:5%;
+    top:auto;
+    bottom:-2%;
+    width:auto;
+    height:104%;
+    max-width:none;
+    object-fit:contain;
+    object-position:center bottom;
+  }
+
+  .hero-slogan{
+    right:4%;
+    top:19%;
+    width:260px;
+    max-width:31%;
+    font-size:clamp(23px,1.8vw,29px);
+    line-height:1.15;
+  }
+
+  .hero-slogan span{
+    width:112px;
+  }
+
+  .brand-ribbons{
+    right:-38px;
+    bottom:-116px;
+    width:152px;
+    height:590px;
+  }
+}
+
+/* Large desktop: allow the composition to breathe even more. */
+@media(min-width:1450px){
+  .hero-grid{
+    min-height:650px;
+  }
+
+  .hero-visual{
+    min-height:650px;
+  }
+
+  .rocket-scene{
+    left:7%;
+    height:106%;
+  }
+
+  .hero-slogan{
+    width:285px;
+    font-size:30px;
+  }
+}
+
+/* Keep tablet/mobile behavior intact. */
