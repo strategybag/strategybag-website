@@ -1251,3 +1251,87 @@ section{
     white-space:normal !important;
   }
 }
+
+
+/* ============================================================
+   MOBILE/TABLET IMPACT FIX — 2026-08-19
+   Applies through 1050px because the current mobile rendering
+   is using the tablet-width CSS layout.
+   Changes ONLY the Impact at a Glance section.
+   ============================================================ */
+
+@media(max-width:1050px){
+
+  .impact{
+    padding:28px 0 30px !important;
+  }
+
+  .impact-grid{
+    display:grid !important;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:0 !important;
+    align-items:stretch !important;
+  }
+
+  .impact-label{
+    grid-column:1 / -1 !important;
+    padding:0 0 16px !important;
+    margin:0 !important;
+    font-size:12px !important;
+    line-height:1.25 !important;
+    letter-spacing:.22em !important;
+  }
+
+  .metric{
+    min-width:0 !important;
+    padding:16px 14px 17px 0 !important;
+    margin:0 !important;
+    border-left:0 !important;
+    border-top:1px solid rgba(255,255,255,.28) !important;
+  }
+
+  /* Right-column metrics */
+  .impact-grid .metric:nth-child(3),
+  .impact-grid .metric:nth-child(5){
+    padding-left:18px !important;
+    padding-right:0 !important;
+    border-left:1px solid rgba(255,255,255,.24) !important;
+  }
+
+  .metric strong{
+    display:block !important;
+    font-size:32px !important;
+    line-height:1 !important;
+    margin:0 !important;
+  }
+
+  .metric span{
+    display:block !important;
+    margin-top:7px !important;
+    max-width:145px !important;
+    font-size:11px !important;
+    line-height:1.25 !important;
+  }
+
+  /* Fifth metric full width */
+  .impact-grid .metric:nth-child(6){
+    grid-column:1 / -1 !important;
+    padding-right:0 !important;
+  }
+
+  .impact-callout{
+    grid-column:1 / -1 !important;
+    min-width:0 !important;
+    width:100% !important;
+    margin-top:10px !important;
+    padding:16px 18px !important;
+    border:3px solid #20bb69 !important;
+    font-size:12px !important;
+    line-height:1.35 !important;
+  }
+
+  .impact-callout span{
+    display:block !important;
+    white-space:normal !important;
+  }
+}
